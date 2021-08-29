@@ -1,0 +1,123 @@
+================ Docker ================
+Overview:
+	- Develop, ship and run application
+	- Docker seperates application from infrastructure
+	- With docker, we manage infrastructure as we manage application
+	- Reduce delay between writing a code and running it in production
+
+1.a Docker Platform:
+	- Docekr run application in isolated environment
+		- Shipping application, you push the image to other environment (stage, production)
+		- No applicaiton dependency on shipping your application
+
+1.b What can i use Docker for:
+	- Fast, Consistent delivery of application
+	- Responsive development and Scaling 
+		- Portable workloads -> Can run in local machine, VM, Cloud, data center
+		- Dynamically manage workloads -> Scale up or tear down application on demand
+	- Running more workloads on same hardware
+
+1.3 Docker Architecture:
+	- Client-Server architecture
+	- Docker client and server can run in same machine or different machine
+	- Docker client will communicate docker server in order to perform a task through Rest API over unix sockets
+	- Behind the hood, it is Docker server who performs actual tasks. Server manages docker objects
+	- Another docker client is Docker compose
+
+Docker Editions:
+	- Community Editions [Free]
+		- Edge release
+		- Stable release
+	- Enterprise Editions [Paid]
+		- Extended support	
+		
+Docker Installation:
+	- Always use latest version of docker. Uninstall pre installer versions of docker	
+		- The pre installed docker version will be out of date
+	- Installation document URL: https://docs.docker.com/engine/install/
+	- Installation Modes:
+		- Setup registory
+		- Install manually
+		- Script
+	 	
+	- While installing install docker, docker-engine and docker-compose
+	- Docker [For client], Docker-Engine[Server], docker-compose[CLI for docker compose]
+	- Verify docker installation
+		- docker version
+		- docker info
+	- Add user to docker group, because docker will run only on root user [In RHEL, even after adding user to docker group, one still need to use sudo command]
+		- sudo usermod -a -G groupName userName
+		
+Container and Images:
+	- Container: Running instance of an image
+	- Image: A packaged binary that make an application
+	- Container commands:
+		- docker container run 
+		- docker container ls
+		- docker container start
+		- docker container stop
+		- docekr container inspect
+		
+	- Getting a shell inside a container
+		- docker container run -it <image name>
+			- This will create a new instance of a container and log us into the container directly
+		- docker container exec it <existing container id>
+			- This will log us into an existing instance of a running container
+		
+	- Network Commands:
+		- docker network ls
+		- docker network create --driver <driver name> <network name>
+		- docker network connect <network ID> <container id>
+		- docker network disconnect <network ID> <container id>
+		
+	- Images:
+		- docker history <container name>
+		- docker inspect <image name>
+		- docker tag <old image/tag> <new image/tag>
+		- docker login 
+		- docker logout
+		- docker push <image>
+		- docker pull <image>
+	
+	- Volumes:
+		- docker volume create 
+		- use -v option while running a container
+
+Docker File:
+	- simple text file that contains the commands a user could call to assemble an image
+	
+
+- How images are layered
+
+
+
+
+Container and Image:
+		- Image
+			- local
+			- Hub
+		- Pull image
+		- Container run
+	
+
+
+
+
+
+Queries:
+
+Docker overview:
+	* How Virtual Box or VM Ware consumens memory from host machine? 
+		- I have a machine with 16 Gb ram, If we allocate 4 Gb for a VM, Do th host have only 12 Gb for host machine to work. 
+		- When this 4 Gb of memory will be consumed. Only when a VM is running or even at shut down state the reserved memory is not available for host machine
+		- Even a container will consume memory, As container is small and has only essential component. Is this the reason that container consume less memory
+		
+	* How to configure docker to look for registry other than docker hub
+	* what is containerd.io package installed while installing docker 
+		- What is OCI "Open Container Initiative"
+	* When and in what situation should we need to check image history
+	* How to use keywhiz for passwords instead of storing them in env variables. 
+		- 
+		
+
+	
