@@ -1,4 +1,4 @@
-================ Docker ================
+================ Docker =================
 Overview:
 	- Develop, ship and run application
 	- Docker seperates application from infrastructure
